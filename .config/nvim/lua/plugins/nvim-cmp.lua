@@ -9,10 +9,12 @@ return {
     "hrsh7th/nvim-cmp",
     "L3MON4D3/LuaSnip",
     "saadparwaiz1/cmp_luasnip",
+    "onsails/lspkind.nvim",
   },
   event = { "InsertEnter" },
   config = function()
     local cmp = require("cmp")
+    local lspkind = require("lspkind")
 
     cmp.setup({
       completion = {
@@ -34,18 +36,56 @@ return {
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
         ["<C-Space>"] = cmp.mapping.complete(),
         ["<C-e>"] = cmp.mapping.abort(),
-        ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+        ["<CR>"] = cmp.mapping.confirm({ select = true }),
       }),
       sources = cmp.config.sources({
         { name = "nvim_lsp" },
         { name = "luasnip" },
-        { name = "path" },
+        { name = "path" }
       }, {
-          { name = "buffer" },
+        { name = "buffer" },
       }),
+      formatting = {
+        format = lspkind.cmp_format({
+          mode = 'symbol_text',
+          maxwidth = 100,
+          ellipsis_char = '...',
+          show_labelDetails = true,
+          before = function (entry, vim_item)
+            return vim_item
+          end,
+          menu = ({
+            nvim_lsp = "[LSP]",
+            luasnip = "[LuaSnip]",
+            path = "[Path]",
+            buffer = "[Buffer]",
+          }),
+        }),
+      },
       experimental = {
         ghost_text = true
       },
+    })
+
+    cmp.setup.cmdline('/', {
+      mapping = cmp.mapping.preset.cmdline(),
+      sources = {
+        { name = 'buffer' }
+      }
+    })
+
+    cmp.setup.cmdline(':', {
+      mapping = cmp.mapping.preset.cmdline(),
+      sources = cmp.config.sources({
+        { name = 'path' }
+      }, {
+        {
+          name = 'cmdline',
+          option = {
+            ignore_cmds = { 'Man', '!' }
+          }
+        }
+      })
     })
   end,
 }
