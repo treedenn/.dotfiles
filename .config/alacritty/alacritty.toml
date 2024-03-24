@@ -1,0 +1,53 @@
+[window]
+padding = { x = 8, y = 8 }
+
+[scrolling]
+multiplier = 10
+
+# FONT : use fc-list | grep -i '<FONT-NAME>'
+[font]
+size = 10
+normal = { family = "CaskaydiaCove Nerd Font Mono", style = "Regular" }
+bold = { family = "CaskaydiaCove Nerd Font Mono", style = "Bold" }
+italic = { family = "CaskaydiaCove Nerd Font Mono", style = "Italic" }
+bold_italic = { family = "CaskaydiaCove Nerd Font Mono", style = "Bold Italic" }
+glyph_offset = { x = 0, y = 0 }
+
+# spawn new instance in same directory
+[keyboard]
+bindings = [
+   { key = "Return", mods = "Control|Shift", action = "SpawnNewInstance" }
+]
+
+# THEME
+
+# Colors (Ayu Dark)
+# https://github.com/alacritty/alacritty-theme/blob/master/themes/ayu_dark.toml
+
+# Default colors
+[colors.primary]
+background = '#000000'
+foreground = '#8a8884'
+
+# Normal colors
+[colors.normal]
+black   = '#01060E'
+red     = '#EA6C73'
+green   = '#91B362'
+yellow  = '#F9AF4F'
+blue    = '#53BDFA'
+magenta = '#FAE994'
+cyan    = '#90E1C6'
+white   = '#C7C7C7'
+
+# Bright colors
+[colors.bright]
+black   = '#686868'
+red     = '#F07178'
+green   = '#C2D94C'
+yellow  = '#FFB454'
+blue    = '#59C2FF'
+magenta = '#FFEE99'
+cyan    = '#95E6CB'
+white   = '#FFFFFF'
+

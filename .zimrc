@@ -8,8 +8,14 @@
 # Modules
 #
 
+# mise
+zmodule joke/zim-mise
+# spaceship prompt
 zmodule spaceship-prompt/spaceship-prompt --name spaceship --no-submodules
-
+# pacman
+zmodule pacman
+# zoxide
+zmodule kiesman99/zim-zoxide
 # Sets sane Zsh built-in environment options.
 #zmodule environment
 # Provides handy git aliases and functions.
