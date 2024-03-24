@@ -7,7 +7,8 @@ sudo pacman -S obsidian
 sudo pacman -S zoxide
 sudo pacman -S ripgrep
 sudo pacman -S ttf-cascadia-code-nerd
-sudo pacman -S ttf-noto-nerd
+sudo pacman -S ttf-nerd-fonts-symbols
+sudo pacman -S ttf-nerd-fonts-symbols-mono
 
 # AUR packages
 yay -S goxlr-utility
