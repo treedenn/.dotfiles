@@ -17,6 +17,7 @@ yay -S nnn
 yay -S brave-bin
 yay -S zsh
 yay -S bitwarden
+yay -S go-task-bin
 
 # git clones
 mkdir ~/Applications
