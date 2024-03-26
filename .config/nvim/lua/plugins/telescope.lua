@@ -8,7 +8,28 @@ return {
     "BurntSushi/ripgrep",
   },
   config = function()
+    local telescope = require("telescope")
     local builtin = require("telescope.builtin")
+
+    telescope.setup({
+      defaults = {
+        theme = "center",
+        sorting_strategy = "ascending",
+        layout_strategy = "horizontal",
+        layout_config = {
+          horizontal = {
+            width = 0.5,
+            preview_width = 0.55, -- percent of width above
+            prompt_position = "top",
+          }
+        }
+      },
+      extensions = {
+        file_browser = {
+          theme = "dropdown"
+        }
+      },
+    })
 
     vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Find files" })
     vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Grep files" })
