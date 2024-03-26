@@ -7,12 +7,13 @@
 # Zsh configuration
 # -----------------
 
+#
+# Aliases
+#
+
 alias vim='nvim'
 alias vi='nvim'
 alias v='nvim'
-
-BROWSER="brave"
-EDITOR="neovim"
 
 #
 # History
@@ -23,8 +24,6 @@ setopt HIST_IGNORE_ALL_DUPS
 
 #
 # Input/output
-#
-
 # Set editor default keymap to emacs (`-e`) or vi (`-v`)
 bindkey -v
 
@@ -74,6 +73,8 @@ WORDCHARS=${WORDCHARS//[\/]}
 #
 # zsh-autosuggestions
 #
+
+bindkey '^@' autosuggest-accept
 
 # Disable automatic widget re-binding on each precmd. This can be set when
 # zsh-users/zsh-autosuggestions is the last module in your ~/.zimrc.

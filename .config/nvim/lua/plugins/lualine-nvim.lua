@@ -3,7 +3,7 @@
 return {
   "nvim-lualine/lualine.nvim",
   dependencies = {
-    "nvim-tree/nvim-web-devicons"
+    "nvim-tree/nvim-web-devicons",
   },
   config = function()
     -- Eviline config for lualine
@@ -180,8 +180,8 @@ return {
         end
         return msg
       end,
-      icon = ' LSP:',
-      color = { fg = '#ffffff', gui = 'bold' },
+      icon = '  LSP:',
+      color = { fg = '#dedede', gui = 'bold' },
     }
 
     -- Add components to right sections

@@ -62,6 +62,8 @@ vim.opt.undofile = true
 -- better feeling when typing and trigger CursorHold (in ms, default 4000)
 vim.opt.updatetime = 50
 
+-- enable showcmd
+vim.opt.showcmd = true
 
 -- Set fold settings
 -- These options were recommended to feel modern by nvim-ufo

@@ -12,6 +12,7 @@ cp -r ~/.config/nvim .config
 cp -r ~/.screenlayout .
 
 # files
+cp ~/.profile .
 cp ~/.bashrc .
 cp ~/.zshrc .
 cp ~/.zimrc .
