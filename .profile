@@ -26,5 +26,5 @@ function setPulseAudioDefaults {
 setPulseAudioDefaults 90
 
 export BROWSER="brave"
-export EDITOR="neovim"
+export EDITOR="nvim"
 

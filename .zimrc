@@ -39,6 +39,8 @@ zmodule utility
 #zmodule asciiship
 # spaceship prompt
 zmodule spaceship-prompt/spaceship-prompt --name spaceship --no-submodules
+# spaceship vi mode
+zmodule spaceship-prompt/spaceship-vi-mode
 
 #
 # Completion

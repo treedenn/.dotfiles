@@ -8,6 +8,13 @@
 # -----------------
 
 #
+# Defaults
+#
+
+BROWSER="brave"
+EDITOR="nvim"
+
+#
 # Aliases
 #
 
@@ -19,8 +26,22 @@ alias v='nvim'
 # History
 #
 
-# Remove older command from the history if a duplicate is to be added.
-setopt HIST_IGNORE_ALL_DUPS
+export HISTFILE=~/.zhistory
+export HISTSIZE=1000
+export SAVEHIST=$HISTSIZE
+
+#setopt EXTENDED_HISTORY          # Write the history file in the ':start:elapsed;command' format.
+setopt HIST_EXPIRE_DUPS_FIRST    # Expire a duplicate event first when trimming history.
+setopt HIST_IGNORE_DUPS          # Do not record an event that was just recorded again.
+setopt HIST_IGNORE_ALL_DUPS      # Delete an old recorded event if a new event is a duplicate.
+setopt HIST_FIND_NO_DUPS         # Do not display a previously found event.
+setopt HIST_IGNORE_SPACE         # Do not record an event starting with a space.
+setopt HIST_SAVE_NO_DUPS         # Do not write a duplicate event to the history file.
+setopt HIST_VERIFY               # Do not execute immediately upon history expansion.
+setopt HIST_NO_STORE             # Don't store history commands
+setopt APPEND_HISTORY            # append to history file
+setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
+setopt SHARE_HISTORY             # Share history between all sessions.
 
 #
 # Input/output
@@ -201,4 +222,9 @@ unset key
 
 # activate mise
 eval "$(~/.local/bin/mise activate zsh)"
+
+# enable refreshing on vi mode
+eval spaceship_vi_mode_enable
+# include vim-mode after prompt char
+spaceship add --before char vi_mode
 
