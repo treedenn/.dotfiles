@@ -1,3 +1,4 @@
+-- https://github.com/neovim/nvim-lspconfig
 return {
   "neovim/nvim-lspconfig",
   dependencies = {
@@ -14,6 +15,7 @@ return {
     local on_attach = function(client, bufnr)
       opts.buffer = bufnr
 
+      -- TODO: make them be under <leader>d something for diagnostic
       opts.desc = "Show LSP references"
       keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts)
 
@@ -62,31 +64,6 @@ return {
       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
     end
 
-    lspconfig["html"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
-
-    lspconfig["tsserver"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
-
-    lspconfig["cssls"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
-
-    lspconfig["unocss"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
-
-    lspconfig["volar"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
-
     lspconfig["lua_ls"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
@@ -105,7 +82,42 @@ return {
       },
     })
 
+    lspconfig["html"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
 
+    lspconfig["cssls"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
 
+    lspconfig["unocss"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+
+    local mason_registry = require('mason-registry')
+    local vue_language_server_path = mason_registry.get_package('vue-language-server'):get_install_path() .. '/node_modules/@vue/language-server'
+
+    lspconfig["tsserver"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+      init_options = {
+        plugins = {
+          {
+            name = '@vue/typescript-plugin',
+            location = vue_language_server_path,
+            languages = { 'vue' },
+          },
+        },
+      },
+      filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+    })
+
+    lspconfig["volar"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
   end,
 }
