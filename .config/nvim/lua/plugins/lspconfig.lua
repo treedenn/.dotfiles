@@ -11,25 +11,32 @@ return {
 
     local keymap = vim.keymap
     local opts = { noremap = true, silent = true }
-
     local on_attach = function(client, bufnr)
       opts.buffer = bufnr
-
-      -- TODO: make them be under <leader>d something for diagnostic
-      opts.desc = "Show LSP references"
-      keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts)
-
-      opts.desc = "Go to declaration"
-      keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
 
       opts.desc = "Show LSP definitions"
       keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
 
+      opts.desc = "Go to declaration"
+      keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+
+      opts.desc = "Show LSP references"
+      keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts)
+
+      opts.desc = "Go to previous diagnostic"
+      keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+
+      opts.desc = "Go to next diagnostic"
+      keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+
+      opts.desc = "Show documentation for what is under cursor"
+      keymap.set("n", "K", vim.lsp.buf.hover, opts)
+
       opts.desc = "Show LSP implementations"
-      keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts)
+      keymap.set("n", "<leader>gi", "<cmd>Telescope lsp_implementations<CR>", opts)
 
       opts.desc = "Show LSP type definitions"
-      keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts)
+      keymap.set("n", "<leader>gt", "<cmd>Telescope lsp_type_definitions<CR>", opts)
 
       opts.desc = "See available code actions"
       keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
@@ -43,20 +50,15 @@ return {
       opts.desc = "Show line diagnostics"
       keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
 
-      opts.desc = "Go to previous diagnostic"
-      keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-
-      opts.desc = "Go to next diagnostic"
-      keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
-
-      opts.desc = "Show documentation for what is under cursor"
-      keymap.set("n", "K", vim.lsp.buf.hover, opts)
-
       opts.desc = "Restart LSP"
       keymap.set("n", "<leader>rs", "<cmd>LspRestart<CR>", opts)
     end
 
     local capabilities = cmp_nvim_lsp.default_capabilities()
+    capabilities.textDocument.foldingRange = {
+        dynamicRegistration = false,
+        lineFoldingOnly = true
+    }
 
     local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
     for type, icon in pairs(signs) do

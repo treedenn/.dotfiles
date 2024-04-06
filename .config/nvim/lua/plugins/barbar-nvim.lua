@@ -18,9 +18,9 @@ return {
 
     -- reordering
     opts.desc = "Move buffer to previous"
-    map.set("n", "<A-<>", "<cmd>BufferMovePrevious<CR>", opts)
+    map.set("n", "<A-S-,>", "<cmd>BufferMovePrevious<CR>", opts)
     opts.desc = "Move buffer to next"
-    map.set("n", "<A->>", "<cmd>BufferMoveNext<CR>", opts)
+    map.set("n", "<A-S-.>", "<cmd>BufferMoveNext<CR>", opts)
 
     -- tabs
     opts.desc = "Go to tab 1"
