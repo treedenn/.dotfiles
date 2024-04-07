@@ -1,9 +1,0 @@
--- https://github.com/mfussenegger/nvim-dap
---
--- no use for it yet
---return {
---  "mfussenegger/nvim-dap",
---  config = function()
---    local dap = require("dap")
---  end,
---}

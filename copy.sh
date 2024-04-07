@@ -2,14 +2,13 @@
 
 DOTFILES=~/.dotfiles
 
-mkdir -p usr/sbin
-
 # folders
-cp -r ~/.config/alacritty .config
-cp -r ~/.config/i3 .config
-cp -r ~/.config/rofi .config
-cp -r ~/.config/nvim .config
-cp -r ~/.screenlayout .
+
+rsync --delete -r ~/.config/nvim .config
+rsync --delete -r ~/.config/alacritty .config
+rsync --delete -r ~/.config/i3 .config
+rsync --delete -r ~/.config/rofi .config
+rsync --delete -r ~/.screenlayout .
 
 # files
 cp ~/.profile .
@@ -19,4 +18,6 @@ cp ~/.zimrc .
 cp ~/.config/spaceship.zsh .config
 
 # uni-sync
+mkdir -p usr/sbin
 cp /usr/sbin/uni-sync.json usr/sbin
+

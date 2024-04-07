@@ -3,6 +3,7 @@ return {
   "williamboman/mason.nvim",
   dependencies = {
     "williamboman/mason-lspconfig.nvim",
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
   },
   config = function()
     require("mason").setup({
@@ -15,6 +16,12 @@ return {
       }
     })
 
+    require("mason-tool-installer").setup({
+      ensure_installed = {
+        "prettier"
+      }
+    })
+
     require("mason-lspconfig").setup({
       ensure_installed = {
         "lua_ls",
@@ -23,7 +30,9 @@ return {
         "html",
         "tsserver",
         "volar",
+        "biome",
       },
     })
   end,
 }
+
