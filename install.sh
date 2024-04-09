@@ -20,6 +20,10 @@ yay -S zsh
 yay -S bitwarden
 yay -S go-task-bin
 
+# Symlinks
+## Create a local symlink named task to go-task-bin executable
+ln -s /usr/bin/go-task ~/.local/bin/task
+
 # git clones
 mkdir ~/Applications
 git clone https://github.com/EightB1ts/uni-sync.git ~/Applications
