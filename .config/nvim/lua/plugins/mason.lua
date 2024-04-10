@@ -18,7 +18,9 @@ return {
 
     require("mason-tool-installer").setup({
       ensure_installed = {
-        "prettier"
+        "prettier",
+        "biome",
+        "sqlfluff",
       }
     })
 
@@ -31,6 +33,9 @@ return {
         "tsserver",
         "volar",
         "biome",
+        "sqlls",
+        "jsonls",
+        "yamlls",
       },
     })
   end,

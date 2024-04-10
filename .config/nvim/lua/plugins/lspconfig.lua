@@ -89,7 +89,22 @@ return {
       on_attach = on_attach,
     })
 
-    lspconfig["cssls"].setup({
+    lspconfig["sqlls"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+
+    lspconfig["yamlls"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+
+    lspconfig["jsonls"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+
+    lspconfig["biome"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
     })
@@ -99,6 +114,7 @@ return {
       on_attach = on_attach,
     })
 
+    -- required to make the lsp work with vue files
     local mason_registry = require('mason-registry')
     local vue_language_server_path = mason_registry.get_package('vue-language-server'):get_install_path() .. '/node_modules/@vue/language-server'
 

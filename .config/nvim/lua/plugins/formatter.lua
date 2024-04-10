@@ -2,7 +2,7 @@ return {
   "mhartington/formatter.nvim",
   config = function()
     local formatter = require("formatter")
-    local util = require("formatter.util")
+    local filetypes = require("formatter.filetypes")
     local defaults = require("formatter.defaults")
 
     -- config
@@ -14,15 +14,24 @@ return {
         css = {
           defaults.biome,
         },
-        ts = {
+        javascript = {
+          defaults.biome,
+        },
+        typescript = {
           defaults.biome,
         },
         vue = {
           defaults.prettier,
         },
+        yaml = {
+          defaults.prettier,
+        },
         json = {
           defaults.biome,
         },
+        sql = {
+          filetypes.sql.sqlfluff,
+        }
       }
     })
 
