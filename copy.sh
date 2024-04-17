@@ -4,20 +4,20 @@ DOTFILES=~/.dotfiles
 
 # folders
 
-rsync --delete -r ~/.config/nvim .config
-rsync --delete -r ~/.config/alacritty .config
-rsync --delete -r ~/.config/i3 .config
-rsync --delete -r ~/.config/rofi .config
-rsync --delete -r ~/.screenlayout .
+rsync --delete -r ~/.config/nvim ${DOTFILES}/.config/
+rsync --delete -r ~/.config/alacritty ${DOTFILES}/.config/
+rsync --delete -r ~/.config/i3 ${DOTFILES}/.config/
+rsync --delete -r ~/.config/rofi ${DOTFILES}/.config/
+rsync --delete -r ~/.screenlayout ${DOTFILES}/
 
 # files
-cp ~/.profile .
-cp ~/.bashrc .
-cp ~/.zshrc .
-cp ~/.zimrc .
-cp ~/.config/spaceship.zsh .config
+cp ~/.profile ${DOTFILES}/
+cp ~/.bashrc ${DOTFILES}/
+cp ~/.zshrc ${DOTFILES}/
+cp ~/.zimrc ${DOTFILES}/
+cp ~/.config/spaceship.zsh ${DOTFILES}/.config
 
 # uni-sync
-mkdir -p usr/sbin
-cp /usr/sbin/uni-sync.json usr/sbin
+mkdir -p ${DOTFILES}/usr/sbin/
+cp /usr/sbin/uni-sync.json ${DOTFILES}/usr/sbin/
 

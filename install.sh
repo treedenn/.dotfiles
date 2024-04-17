@@ -10,6 +10,7 @@ sudo pacman -S ripgrep
 sudo pacman -S ttf-cascadia-code-nerd
 sudo pacman -S ttf-nerd-fonts-symbols
 sudo pacman -S ttf-nerd-fonts-symbols-mono
+sudo pacman -S tmux
 
 # AUR packages
 yay -S goxlr-utility
@@ -34,3 +35,6 @@ curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | 
 curl https://mise.run | sh
 ~/.local/bin/mise --version
 
+# keyboard layout
+localectl set-x11-keymap gb,dk pc104 "" grp:win_space_toggle
+setxkbmap gb,dk pc104 "" grp:win_space_toggle

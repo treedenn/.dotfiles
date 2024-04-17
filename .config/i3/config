@@ -305,8 +305,8 @@ bindsym $mod+Print exec --no-startup-id scrot ~/%Y-%m-%d-%T-screenshot.png && no
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1:"
-set $ws2 "2:"
-set $ws3 "3:"
+set $ws2 "2:"
+set $ws3 "3:"
 set $ws4 "4:"
 set $ws5 "5:"
 set $ws6 "6"
@@ -501,11 +501,11 @@ set $yellowbrown	#e1b700
 set $orange		#4d2300
 
 # define colors for windows:
-#class		        	border		bground		text		indicator	child_border
-client.focused		    	$orange		$darkgrey2	$grey		$mediumgrey	$orange
-client.unfocused	    	$darkgrey	$darkgrey2	$mediumgrey	$darkgrey	$darkgrey2
-client.focused_inactive		$darkblue	$darkgrey2	$grey		$black		$black
-client.urgent		    	$urgentred	$urgentred	$white		$yellowbrown	$yellowbrown
+#class										border			bground			text		indicator	child_border
+client.focused						$darkgrey		$darkgrey2	$grey		$darkgrey2	$black
+client.unfocused					$darkgrey2	$darkgrey2	$mediumgrey	$darkgrey2 $darkgrey2
+client.focused_inactive		$darkblue		$darkgrey2	$grey		$black		$darkgrey2
+client.urgent							$urgentred	$urgentred	$white		$yellowbrown	$yellowbrown
 
 ############################################
 # bar settings (input comes from i3blocks) #

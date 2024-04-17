@@ -4,7 +4,18 @@ return {
   event = "InsertEnter",
   config = function()
     local copilot = require("copilot")
+    local panel = require("copilot.panel")
+    local suggestion = require("copilot.suggestion")
 
-    copilot.setup({})
+    copilot.setup({
+      filetypes = {
+        javascript = true, -- allow specific filetype
+        typescript = true, -- allow specific filetype
+        ["*"] = false, -- disable for all other filetypes and ignore default `filetypes`
+      },
+      suggestion = {
+--        auto_trigger = true,
+      }
+    })
   end,
 }
