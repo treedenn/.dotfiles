@@ -2,4 +2,5 @@ version: '3'
 
 tasks:
   stow:
-    cmd: echo 'hello world!'
+    dir: .
+    cmd: stow . --adopt
