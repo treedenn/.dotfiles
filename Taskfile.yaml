@@ -3,4 +3,10 @@ version: '3'
 tasks:
   stow:
     dir: .
-    cmd: stow . --adopt
+    cmds:
+      - stow --ignore usr --adopt . 
+
+  nstow:
+    dir: .
+    cmds:
+      - stow --ignore usr -n . 
