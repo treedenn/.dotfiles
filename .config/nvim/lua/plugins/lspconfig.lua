@@ -1,20 +1,27 @@
 -- https://github.com/neovim/nvim-lspconfig
+-- https://github.com/pmizio/typescript-tools.nvim 
+-- https://github.com/kosayoda/nvim-lightbulb
 return {
   "neovim/nvim-lspconfig",
   dependencies = {
     "nvim-lua/plenary.nvim",
     "hrsh7th/cmp-nvim-lsp",
     "pmizio/typescript-tools.nvim",
+    "nvim-telescope/telescope.nvim",
+    "kosayoda/nvim-lightbulb",
   },
   event = { "BufReadPre", "BufNewFile" },
   config = function()
     local lspconfig = require("lspconfig")
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
-    local keymap = vim.keymap
-    local opts = { noremap = true, silent = true }
+    require("nvim-lightbulb").setup({
+      autocmd = { enabled = true }
+    })
+
     local on_attach = function(client, bufnr)
-      opts.buffer = bufnr
+      local keymap = vim.keymap
+      local opts = { noremap = true, silent = true, buffer = bufnr }
 
       opts.desc = "Show LSP definitions"
       keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
@@ -122,53 +129,45 @@ return {
       on_attach = on_attach,
     })
 
+    -- trying typescript tools as an alterative to tsserver lsp
+    -- require("typescript-tools").setup({
+    --   on_attach = on_attach,
+    --   settings = {
+    --     expose_as_code_action = 'all',
+    --     tsserver_file_preferences = {
+    --       importModuleSpecifierPreference = 'non-relative',
+    --     },
+    --     tsserver_format_options = {
+    --     },
+    --   },
+    -- })
+
     -- required to make the lsp work with vue files
     local mason_registry = require('mason-registry')
     local vue_language_server_path = mason_registry.get_package('vue-language-server'):get_install_path() .. '/node_modules/@vue/language-server'
 
-    -- trying typescript tools as an alterative to tsserver lsp
-    require("typescript-tools").setup({
+    -- https://github.com/typescript-language-server/typescript-language-server/blob/master/docs/configuration.md
+    lspconfig["tsserver"].setup({
+      capabilities = capabilities,
       on_attach = on_attach,
-      settings = {
-        expose_as_code_action = 'all',
-        tsserver_file_preferences = {
-          importModuleSpecifierPreference = 'non-relative',
-        },
-        tsserver_format_options = {
-        },
+      init_options = {
         plugins = {
           {
             name = '@vue/typescript-plugin',
             location = vue_language_server_path,
             languages = { 'vue' },
           },
-        }
+        },
+        tsserver = {
+          importModuleSpecifierPreference = 'non-relative',
+        },
       },
+      filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
     })
-
-    -- https://github.com/typescript-language-server/typescript-language-server/blob/master/docs/configuration.md
-    -- lspconfig["tsserver"].setup({
-    --   capabilities = capabilities,
-    --   on_attach = on_attach,
-    --   init_options = {
-    --     tsserver = {
-    --       importModuleSpecifierPreference = 'non-relative',
-    --     },
-    --     plugins = {
-    --       {
-    --         name = '@vue/typescript-plugin',
-    --         location = vue_language_server_path,
-    --         languages = { 'vue' },
-    --       },
-    --     },
-    --   },
-    --   -- filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
-    --   filetypes = { 'javascriptreact', 'typescriptreact', 'vue' },
-    -- })
 
     lspconfig["volar"].setup({
       capabilities = capabilities,
-      on_attach = on_attach,
+      on_attach= on_attach,
     })
   end,
 }

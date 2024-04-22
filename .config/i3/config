@@ -339,7 +339,7 @@ for_window [class=Thunderbird] focus
 for_window [class=TelegramDesktop] focus
 
 # init workspaces (permanent)
-#workspace $ws3 output DisplayPort-1
+workspace $ws4 output DisplayPort-1
 
 ##############
 # compositor #
