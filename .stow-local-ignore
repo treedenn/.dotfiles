@@ -1,0 +1,13 @@
+# GNU Stow ignore list
+
+\.git
+\.gitignore
+\.gitmodules
+
+^/README.*
+^/LICENSE.*
+^/COPYING
+
+\Taskfile.yaml
+
+\scripts
