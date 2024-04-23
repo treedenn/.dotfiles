@@ -10,7 +10,11 @@ return {
   },
   config = function()
     local telescope = require("telescope")
+    local config = require("telescope.config")
     local builtin = require("telescope.builtin")
+
+    local vimgrep_arguments = config.values.vimgrep_arguments
+    table.insert(vimgrep_arguments, "--hidden")
 
     telescope.setup({
       defaults = {
@@ -23,7 +27,47 @@ return {
             preview_width = 0.55, -- percent of width above
             prompt_position = "top",
           }
-        }
+        },
+        hidden = true,
+        -- vimgrep_arguments = {
+        --   "rg",
+        --   "--follow",        -- Follow symbolic links
+        --   "--hidden",        -- Search for hidden files
+        --   "--no-heading",    -- Don't group matches by each file
+        --   "--with-filename", -- Print the file path with the matched lines
+        --   "--line-number",   -- Show line numbers
+        --   "--column",        -- Show column numbers
+        --   "--smart-case",    -- Smart case search
+        --
+        --   -- Exclude some patterns from search
+        --   "--glob=!**/.git/*",
+        --   "--glob=!**/.idea/*",
+        --   "--glob=!**/.vscode/*",
+        --   "--glob=!**/build/*",
+        --   "--glob=!**/dist/*",
+        --   "--glob=!**/yarn.lock",
+        --   "--glob=!**/package-lock.json",
+        -- },
+      },
+      pickers = {
+        find_files = {
+          follow = true,
+          hidden = true,
+          -- find_command = {
+          --   "rg",
+          --   "--files",
+          --   "--hidden", -- Search for hidden files
+          --
+          --   -- Exclude some patterns from search
+          --   "--glob=!**/.git/*",
+          --   "--glob=!**/.idea/*",
+          --   "--glob=!**/.vscode/*",
+          --   "--glob=!**/build/*",
+          --   "--glob=!**/dist/*",
+          --   "--glob=!**/yarn.lock",
+          --   "--glob=!**/package-lock.json",
+          -- },
+        },
       },
       extensions = {
         file_browser = {
