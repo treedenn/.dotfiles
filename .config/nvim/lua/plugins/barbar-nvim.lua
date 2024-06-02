@@ -49,6 +49,7 @@ return {
     map.set("n", "<A-p>", "<cmd>BufferPin<CR>", opts)
     opts.desc = "Unpin tab"
     map.set("n", "<A-c>", "<cmd>BufferClose<CR>", opts)
+    map.set("n", "<S-A-c>", "<cmd>BufferClose!<CR>", opts)
 
     opts.desc = "Magic buffer pick"
     map.set("n", "<C-p>", "<cmd>BufferPick<CR>", opts)

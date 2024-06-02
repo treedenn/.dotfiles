@@ -4,7 +4,7 @@ tasks:
   stow:
     dir: .
     cmds:
-      - stow --ignore usr --adopt . 
+      - stow --ignore usr --adopt .
 
   nstow:
     dir: .

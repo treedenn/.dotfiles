@@ -1,11 +1,16 @@
-// If you'd like to override the default keybindings completely, be sure to change "keybinds" to "keybinds clear-defaults=true"
+// Redo the keybinds at some point
 keybinds clear-defaults=true {
     normal {
+        bind "Alt H" { GoToPreviousTab; }
+        bind "Alt L" { GoToNextTab; }
     }
+
     locked {
         bind "Alt g" { SwitchToMode "Normal"; }
         bind "Alt w" { SwitchToMode "Tmux"; }
+        bind "Alt W" { SwitchToMode "Normal"; }
     }
+
     resize {
         bind "Alt n" { SwitchToMode "Locked"; }
         bind "h" "Left" { Resize "Increase Left"; }
@@ -19,6 +24,7 @@ keybinds clear-defaults=true {
         bind "=" "+" { Resize "Increase"; }
         bind "-" { Resize "Decrease"; }
     }
+
     move {
         bind "Alt g" { SwitchToMode "Locked"; }
         bind "n" "Tab" { MovePane; }
@@ -28,6 +34,7 @@ keybinds clear-defaults=true {
         bind "k" "Up" { MovePane "Up"; }
         bind "l" "Right" { MovePane "Right"; }
     }
+
     scroll {
         bind "Alt s" { SwitchToMode "Locked"; }
         bind "e" { EditScrollback; SwitchToMode "Locked"; }
@@ -39,33 +46,34 @@ keybinds clear-defaults=true {
         bind "Alt b" "PageUp" "Left" "h" { PageScrollUp; }
         bind "d" { HalfPageScrollDown; }
         bind "u" { HalfPageScrollUp; }
-        // uncomment this and adjust key if using copy_on_select=false
-        // bind "Alt c" { Copy; }
+        bind "Ctrl C" { Copy; }
     }
+
     pane {
         bind "Alt p" { SwitchToMode "Locked"; }
         bind "h" "Left" { MoveFocus "Left"; }
         bind "l" "Right" { MoveFocus "Right"; }
         bind "j" "Down" { MoveFocus "Down"; }
         bind "k" "Up" { MoveFocus "Up"; }
-        bind "p" { SwitchFocus; }
         bind "n" { NewPane; SwitchToMode "Locked"; }
         bind "d" { NewPane "Down"; SwitchToMode "Locked"; }
         bind "r" { NewPane "Right"; SwitchToMode "Locked"; }
         bind "x" { CloseFocus; SwitchToMode "Locked"; }
+        bind "p" { SwitchFocus; }
         bind "f" { ToggleFocusFullscreen; SwitchToMode "Locked"; }
         bind "z" { TogglePaneFrames; SwitchToMode "Locked"; }
         bind "w" { ToggleFloatingPanes; SwitchToMode "Locked"; }
         bind "e" { TogglePaneEmbedOrFloating; SwitchToMode "Locked"; }
         bind "c" { SwitchToMode "RenamePane"; PaneNameInput 0; }
     }
+
     tab {
         bind "Alt t" { SwitchToMode "Locked"; }
         bind "r" { SwitchToMode "RenameTab"; TabNameInput 0; }
         bind "h" "Left" "Up" "k" { GoToPreviousTab; }
         bind "l" "Right" "Down" "j" { GoToNextTab; }
         bind "n" { NewTab; SwitchToMode "Locked"; }
-        bind "x" { CloseTab; SwitchToMode "Locked"; }
+        bind "c" { CloseTab; SwitchToMode "Locked"; }
         bind "s" { ToggleActiveSyncTab; SwitchToMode "Locked"; }
         bind "b" { BreakPane; SwitchToMode "Locked"; }
         bind "]" { BreakPaneRight; SwitchToMode "Locked"; }
@@ -81,6 +89,7 @@ keybinds clear-defaults=true {
         bind "9" { GoToTab 9; SwitchToMode "Locked"; }
         bind "Tab" { ToggleTab; }
     }
+
     tmux { 
         bind "[" { SwitchToMode "Scroll"; }
         bind "\"" { NewPane "Down"; SwitchToMode "Locked"; }
@@ -103,6 +112,7 @@ keybinds clear-defaults=true {
         bind "Space" { NextSwapLayout; }
         bind "q" { CloseFocus; SwitchToMode "Locked"; }
     }
+
     search {
         bind "Alt g" { SwitchToMode "Locked"; }
         bind "Alt c" { ScrollToBottom; SwitchToMode "Locked"; }
@@ -118,21 +128,25 @@ keybinds clear-defaults=true {
         bind "w" { SearchToggleOption "Wrap"; }
         bind "o" { SearchToggleOption "WholeWord"; }
     }
+
     entersearch {
-        bind "Alt c" "Esc" { SwitchToMode "Scroll"; }
+        bind "Ctrl c" "Esc" { SwitchToMode "Scroll"; }
         bind "Enter" { SwitchToMode "Search"; }
     }
+
     renametab {
-        bind "Alt c" { SwitchToMode "Locked"; }
+        bind "Ctrl c" { SwitchToMode "Locked"; }
         bind "Esc" { UndoRenameTab; SwitchToMode "Tab"; }
     }
+
     renamepane {
         bind "Alt c" { SwitchToMode "Locked"; }
         bind "Esc" { UndoRenamePane; SwitchToMode "Pane"; }
     }
+    
     session {
         bind "Alt o" { SwitchToMode "Locked"; }
-        bind "Alt s" { SwitchToMode "Scroll"; }
+        bind "s" { SwitchToMode "Scroll"; }
         bind "d" { Detach; }
         bind "w" {
             LaunchOrFocusPlugin "session-manager" {
@@ -142,12 +156,13 @@ keybinds clear-defaults=true {
             SwitchToMode "Normal"
         }
     }
+
     shared_except "locked" {
-        bind "Alt g" { SwitchToMode "Locked"; }
+        bind "Alt g" "Alt W" { SwitchToMode "Locked"; }
         bind "Alt q" { Quit; }
         bind "Alt n" { NewPane; }
-        bind "Alt i" { MoveTab "Left"; }
-        bind "Alt o" { MoveTab "Right"; }
+        bind "Alt u" { MoveTab "Left"; }
+        bind "Alt i" { MoveTab "Right"; }
         bind "Alt h" "Alt Left" { MoveFocusOrTab "Left"; }
         bind "Alt l" "Alt Right" { MoveFocusOrTab "Right"; }
         bind "Alt j" "Alt Down" { MoveFocus "Down"; }
@@ -157,28 +172,36 @@ keybinds clear-defaults=true {
         bind "Alt [" { PreviousSwapLayout; }
         bind "Alt ]" { NextSwapLayout; }
     }
+
     shared_except "normal" "locked" {
         bind "Enter" "Esc" { SwitchToMode "Locked"; }
     }
+
     shared_except "pane" "locked" {
         bind "Alt p" { SwitchToMode "Pane"; }
     }
+
     shared_except "resize" "locked" {
         bind "Alt n" { SwitchToMode "Resize"; }
     }
+
     shared_except "scroll" "locked" {
         bind "Alt s" { SwitchToMode "Scroll"; }
     }
+
     shared_except "session" "locked" {
         bind "Alt o" { SwitchToMode "Session"; }
     }
+
     shared_except "tab" "locked" {
         bind "Alt t" { SwitchToMode "Tab"; }
     }
+
     shared_except "move" "locked" {
         bind "Alt h" { SwitchToMode "Move"; }
     }
-    shared_except "tmux" "locked" {
+
+    shared_except "tmux" {
         bind "Alt w" { SwitchToMode "Tmux"; }
     }
 }
@@ -258,26 +281,26 @@ plugins {
 // For more examples, see: https://github.com/zellij-org/zellij/tree/main/example/themes
 // Once these themes are defined, one of them should to be selected in the "theme" section of this file
 //
-// themes {
-//     dracula {
-//         fg 248 248 242
-//         bg 40 42 54
-//         red 255 85 85
-//         green 80 250 123
-//         yellow 241 250 140
-//         blue 98 114 164
-//         magenta 255 121 198
-//         orange 255 184 108
-//         cyan 139 233 253
-//         black 0 0 0
-//         white 255 255 255
-//     }
-// }
+themes {
+    custom {
+        fg 50 50 50
+        bg 0 0 0
+        black 0 0 0
+        red 205 37 29
+        green 211 95 11
+        yellow 211 158 39
+        blue 69 129 129
+        magenta 170 92 122
+        cyan 100 150 100
+        orange 211 95 11
+        white 251 241 240
+    }
+}
 
 // Choose the theme that is specified in the themes section.
 // Default: default
 //
-// theme "default"
+theme "custom"
 
 // The name of the default layout to load on startup
 // Default: "default"
@@ -328,7 +351,7 @@ default_mode "locked"
 // Enable or disable automatic copy (and clear) of selection when releasing mouse
 // Default: true
 //
-// copy_on_select false
+copy_on_select false
 
 // Path to the default editor to use to edit pane scrollbuffer
 // Default: $EDITOR or $VISUAL

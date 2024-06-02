@@ -233,3 +233,6 @@ eval spaceship_vi_mode_enable
 # include vim-mode after prompt char
 spaceship add --before char vi_mode
 
+
+# bun completions
+[ -s "/home/trd/.bun/_bun" ] && source "/home/trd/.bun/_bun"
