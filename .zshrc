@@ -23,7 +23,7 @@ alias vi='nvim'
 alias v='nvim'
 alias zij='zellij'
 
-source ./.zsh-aliases
+source ~/.zsh-aliases
 
 #
 # History
