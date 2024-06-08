@@ -1,4 +1,5 @@
 -- https://github.com/williamboman/mason.nvim
+-- https://mason-registry.dev/registry/list
 return {
   "williamboman/mason.nvim",
   dependencies = {
@@ -32,6 +33,7 @@ return {
         "html",
         "tsserver",
         "volar",
+        "gopls",
         "biome",
         "sqlls",
         "jsonls",

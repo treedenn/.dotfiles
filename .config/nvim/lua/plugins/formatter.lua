@@ -1,3 +1,4 @@
+-- https://github.com/mhartington/formatter.nvim
 return {
   "mhartington/formatter.nvim",
   config = function()
@@ -31,6 +32,9 @@ return {
         },
         sql = {
           filetypes.sql.sqlfluff,
+        },
+        go = {
+          filetypes.go.gofmt,
         }
       }
     })

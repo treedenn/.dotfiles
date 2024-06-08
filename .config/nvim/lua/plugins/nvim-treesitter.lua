@@ -16,6 +16,7 @@ return {
         "css",
         "scss",
         "http",
+        "go",
         "javascript",
         "typescript",
         "vue",

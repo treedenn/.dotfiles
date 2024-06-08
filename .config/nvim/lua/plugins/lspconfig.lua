@@ -129,6 +129,12 @@ return {
       on_attach = on_attach,
     })
 
+    lspconfig["gopls"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+      root_dir = function() return vim.loop.cwd() end,
+    })
+
     -- trying typescript tools as an alterative to tsserver lsp
     -- require("typescript-tools").setup({
     --   on_attach = on_attach,
