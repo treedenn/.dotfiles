@@ -10,7 +10,6 @@ sudo pacman -S neovim
 sudo pacman -S obsidian
 sudo pacman -S tmux
 sudo pacman -S zellij
-sudo pacman -S github-cli
 
 ## Tools
 
@@ -18,6 +17,8 @@ sudo pacman -S zoxide
 sudo pacman -S fzf
 sudo pacman -S ripgrep
 sudo pacman -S go delve # delve is DAP for go
+sudo pacman -S github-cli
+sudo pacman -S helm
 
 ## Fonts
 

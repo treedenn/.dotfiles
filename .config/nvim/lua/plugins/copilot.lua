@@ -1,3 +1,4 @@
+-- https://github.com/zbirenbaum/copilot.lua
 return {
   "zbirenbaum/copilot.lua",
   cmd = "Copilot",
@@ -9,12 +10,12 @@ return {
 
     copilot.setup({
       filetypes = {
-        javascript = true, -- allow specific filetype
-        typescript = true, -- allow specific filetype
-        ["*"] = false, -- disable for all other filetypes and ignore default `filetypes`
+        -- javascript = true, -- allow specific filetype
+        -- typescript = true, -- allow specific filetype
+        ["*"] = true, -- disable for all other filetypes and ignore default `filetypes`
       },
       suggestion = {
---        auto_trigger = true,
+        auto_trigger = true,
       }
     })
   end,

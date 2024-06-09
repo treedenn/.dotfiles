@@ -7,6 +7,9 @@
 # Zsh configuration
 # -----------------
 
+# Add go bin to path
+PATH=$PATH:/home/trd/go/bin
+
 #
 # Defaults
 #
