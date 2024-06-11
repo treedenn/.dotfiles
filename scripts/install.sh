@@ -18,7 +18,9 @@ sudo pacman -S fzf
 sudo pacman -S ripgrep
 sudo pacman -S go delve # delve is DAP for go
 sudo pacman -S github-cli
+sudo pacman -S kubectl
 sudo pacman -S helm
+sudo pacman -S k9s
 
 ## Fonts
 

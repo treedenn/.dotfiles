@@ -1,6 +1,7 @@
 -- https://github.com/neovim/nvim-lspconfig
 -- https://github.com/pmizio/typescript-tools.nvim 
 -- https://github.com/kosayoda/nvim-lightbulb
+-- https://github.com/someone-stole-my-name/yaml-companion.nvim
 return {
   "neovim/nvim-lspconfig",
   dependencies = {
@@ -9,6 +10,8 @@ return {
     "pmizio/typescript-tools.nvim",
     "nvim-telescope/telescope.nvim",
     "kosayoda/nvim-lightbulb",
+    "someone-stole-my-name/yaml-companion.nvim",
+    "b0o/SchemaStore.nvim",
   },
   event = { "BufReadPre", "BufNewFile" },
   config = function()
@@ -108,14 +111,69 @@ return {
 --      },
 --    })
 
-    lspconfig["yamlls"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
+    vim.keymap.set("n", "<leader>ys", "<cmd>Telescope yaml_schema<CR>", { desc = "Select YAML schema" })
+    require("telescope").load_extension("yaml_schema")
+    local yamlConf = require("yaml-companion").setup({
+      builtin_matchers = {
+        kubernetes = { enabled = true },
+        cloud_init = { enabled = true }
+      },
+      schemas = {
+        {
+          name = "Kubernetes 1.22.4",
+          uri = "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.22.4-standalone-strict/all.json",
+        },
+      },
+      lspconfig = {
+        capabilities = capabilities,
+        on_attach = on_attach,
+        flags = {
+          debounce_text_changes = 150,
+        },
+        settings = {
+          redhat = { telemetry = { enabled = false } },
+          yaml = {
+            validate = true,
+            format = { enable = true },
+            hover = true,
+            schemaStore = {
+              enable = false,
+              url = "https://www.schemastore.org/api/json/catalog.json",
+            },
+            schemaDownload = { enable = true },
+            trace = { server = "debug" },
+            schemas = require("schemastore").yaml.schemas({
+              extra = {
+                {
+                  name =  "Taskfile config",
+                  description = "Taskfile files",
+                  fileMatch = {
+                    "Taskfile.yaml",
+                    "Taskfile.dist.yaml",
+                    "Taskfile.yml",
+                    "Taskfile.dist.yml",
+                    "*.taskfile.yaml",
+                    "*.taskfile.yml",
+                  },
+                  url = "https://taskfile.dev/schema.json"
+                }
+              }
+            }),
+          },
+        },
+      }
     })
+    lspconfig["yamlls"].setup(yamlConf)
 
     lspconfig["jsonls"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
+      settings = {
+        json = {
+          schemas = require('schemastore').json.schemas(),
+          validate = { enable = true },
+        }
+      }
     })
 
     lspconfig["biome"].setup({
