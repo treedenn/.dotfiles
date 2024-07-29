@@ -28,7 +28,6 @@ return {
             prompt_position = "top",
           }
         },
-        hidden = true,
         -- vimgrep_arguments = {
         --   "rg",
         --   "--follow",        -- Follow symbolic links
@@ -52,7 +51,6 @@ return {
       pickers = {
         find_files = {
           follow = true,
-          hidden = true,
           -- find_command = {
           --   "rg",
           --   "--files",
@@ -77,9 +75,17 @@ return {
     })
 
     vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Find files" })
+    vim.keymap.set("n", "<leader>fF", function() builtin.find_files({ hidden = true }) end, { desc = "Find (hidden) files" })
+
     vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Grep files" })
+    vim.keymap.set("n", "<leader>fG", function() builtin.live_grep({ hidden = true }) end, { desc = "Grep (hidden) files" })
+   
     vim.keymap.set("n", "<leader>fs", function() builtin.oldfiles({ cwd_only = true }) end, { desc = "Previous files" })
-    vim.keymap.set("n", "<leader>fS", builtin.oldfiles, { desc = "Previous files (globally)" })
+    vim.keymap.set("n", "<leader>fS", function() builtin.oldfiles({ cwd_only = true, hidden = true }) end, { desc = "Previous (hidden) files" })
+
+    vim.keymap.set("n", "<leader>fa", builtin.oldfiles, { desc = "Previous files, globally" })
+    vim.keymap.set("n", "<leader>fA", function() builtin.oldfiles({ hidden = true }) end, { desc = "Previous (hidden) files, globally" })
+
     vim.keymap.set("n", "<leader>fr", builtin.buffers, { desc = "Open buffers" })
     vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Help Tags" })
     vim.keymap.set("n", "<leader>fc", builtin.grep_string, { desc = "Grep word below cursor" })

@@ -29,6 +29,12 @@ return {
     vim.keymap.set('n', '<leader>hl', '<cmd>HopLine<CR>', { desc = "Go to any line" })
     vim.keymap.set('n', '<leader>hs', '<cmd>HopLineStart<CR>', { desc = "Go to any line start" })
 
+    -- calls with comma
+    vim.keymap.set('n', ',w', '<cmd>HopWord<CR>', { desc = "Go to any word in the current buffer" })
+    vim.keymap.set('n', ',c', '<cmd>HopCamelCase<CR>', { desc = "Go to any camelCase word in the current buffer" })
+    vim.keymap.set('n', ',l', '<cmd>HopLine<CR>', { desc = "Go to any line" })
+    vim.keymap.set('n', ',s', '<cmd>HopLineStart<CR>', { desc = "Go to any line start" })
+
   end
 }
 

@@ -6,9 +6,8 @@ keybinds clear-defaults=true {
     }
 
     locked {
-        bind "Alt g" { SwitchToMode "Normal"; }
+        bind "Alt g" "Alt a" { SwitchToMode "Normal"; }
         bind "Alt w" { SwitchToMode "Tmux"; }
-        bind "Alt W" { SwitchToMode "Normal"; }
     }
 
     resize {
@@ -158,7 +157,7 @@ keybinds clear-defaults=true {
     }
 
     shared_except "locked" {
-        bind "Alt g" "Alt W" { SwitchToMode "Locked"; }
+        bind "Alt g" "Alt a" { SwitchToMode "Locked"; }
         bind "Alt q" { Quit; }
         bind "Alt n" { NewPane; }
         bind "Alt u" { MoveTab "Left"; }

@@ -4,7 +4,6 @@ return {
   "nvim-lualine/lualine.nvim",
   dependencies = {
     "nvim-tree/nvim-web-devicons",
-    "someone-stole-my-name/yaml-companion.nvim",
   },
   config = function()
     -- Eviline config for lualine
@@ -183,16 +182,6 @@ return {
       end,
       icon = '  LSP:',
       color = { fg = '#dedede', gui = 'bold' },
-    }
-
-    ins_left {
-      function()
-        local schema = require("yaml-companion").get_buf_schema(0)
-        if schema.result[1].name == "none" then
-          return ""
-        end
-        return schema.result[1].name
-      end,
     }
 
     -- Add components to right sections
