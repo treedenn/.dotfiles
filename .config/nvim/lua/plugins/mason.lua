@@ -31,7 +31,7 @@ return {
         "cssls",
         "unocss",
         "html",
-        "tsserver",
+        "ts_ls",
         "volar",
         "gopls",
         "biome",

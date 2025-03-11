@@ -205,7 +205,7 @@ return {
     local vue_language_server_path = mason_registry.get_package('vue-language-server'):get_install_path() .. '/node_modules/@vue/language-server'
 
     -- https://github.com/typescript-language-server/typescript-language-server/blob/master/docs/configuration.md
-    lspconfig["tsserver"].setup({
+    lspconfig["ts_ls"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
       init_options = {
