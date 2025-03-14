@@ -1,0 +1,6 @@
+require("mappings.normal")
+require("mappings.insert")
+require("mappings.visual")
+require("mappings.fzf-lua")
+require("mappings.formatter")
+require("mappings.oil-nvim")

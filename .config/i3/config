@@ -183,7 +183,7 @@ bindsym $mod+BackSpace exec --no-startup-id $terminal -e 'zellij'
 bindsym $mod+q kill
 
 # exit-menu
-bindsym $mod+Shift+e exec --no-startup-id ~/.config/i3/scripts/powermenu
+bindsym $mod+Shift+e exec --no-startup-id ~/.config/rofi/powermenu/type-1/powermenu.sh
 
 # Lock the system
 # lock with a picture:
@@ -197,13 +197,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to update i3)
 bindsym $mod+Shift+r restart
 
-# keybinding in fancy rofi (automated):
-bindsym F1 exec --no-startup-id ~/.config/i3/scripts/keyhint-2
-# alternative
-# keybinding list in editor:
-# bindsym $mod+F1 exec --no-startup-id xed ~/.config/i3/keybindings
-
-# Backlight control
+# Backlight controlType
 #bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight +10 && notify-send "Brightness - $(xbacklight -get | cut -d '.' -f 1)%"
 #bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -10 && notify-send "Brightness - $(xbacklight -get | cut -d '.' -f 1)%"
 # Backlight setting using dunst osc
@@ -296,9 +290,6 @@ bindsym $mod+n exec --no-startup-id $terminal -e 'nnn'
 bindsym Print exec --no-startup-id scrot -u ~/%Y-%m-%d-%T-screenshot.png && notify-send "Screenshot saved to ~/$(date +"%Y-%m-%d-%T")-screenshot.png"
 bindsym $mod+Print exec --no-startup-id scrot ~/%Y-%m-%d-%T-screenshot.png && notify-send "Screenshot saved to ~/$(date +"%Y-%m-%d-%T")-screenshot.png"
 
-# Power Profiles menu switcher (rofi)
-#bindsym $mod+Shift+p exec --no-startup-id ~/.config/i3/scripts/power-profiles
-
 ##########################################
 # configuration for workspace behaviour: #
 ##########################################
@@ -338,9 +329,6 @@ for_window [class=(?i)Brave] focus
 for_window [class=nnn] focus
 for_window [class=Thunderbird] focus
 for_window [class=TelegramDesktop] focus
-
-# init workspaces (permanent)
-workspace $ws4 output DisplayPort-1
 
 ##############
 # compositor #
@@ -581,15 +569,10 @@ strip_workspace_numbers yes
 ## rofi bindings fancy application menu ($mod+d /F9 optional disabled)
 
 bindsym $mod+d exec --no-startup-id rofi -modi drun -show drun \
-		-config ~/.config/rofi/rofidmenu.rasi
-
-#bindsym F9 exec --no-startup-id rofi -modi drun -show drun \
-#		-config ~/.config/rofi/rofidmenu.rasi
-
-## rofi bindings for window menu ($mod+t /F10 optional disabled)
+		-theme ~/.config/rofi/launchers/type-3/style-10.rasi
 
 bindsym $mod+t exec --no-startup-id rofi -show window \
-		-config ~/.config/rofi/rofidmenu.rasi
+		-theme ~/.config/rofi/launchers/type-3/style-10.rasi
 
 #bindsym F10 exec --no-startup-id rofi -show window \
 #		-config ~/.config/rofi/rofidmenu.rasi
