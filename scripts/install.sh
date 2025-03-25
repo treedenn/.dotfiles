@@ -45,6 +45,9 @@ yay -S nnn
 yay -S go-task-bin
 yay -S zsh
 
+## Miscellaneous
+yay -S lua51-tiktoken-bin # for CopilotChat plugin in Neovim
+
 #
 # Plugins
 #
