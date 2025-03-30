@@ -54,7 +54,7 @@ vim.opt.signcolumn = "yes"
 vim.opt.termguicolors = true
 
 -- always show completion menu and always manual select
-vim.opt.completeopt = { "menuone", "noselect" }
+vim.opt.completeopt = { "menuone", "noselect", "noinsert", "popup" }
 
 -- persistent undo history (even after reboot)
 vim.opt.undofile = true
