@@ -1,3 +1,4 @@
+-- https://github.com/Saghen/blink.cmp
 return {
   'saghen/blink.cmp',
   dependencies = 'rafamadriz/friendly-snippets',
@@ -9,6 +10,14 @@ return {
       nerd_font_variant = 'mono'
     },
 
-    signature = { enabled = true },
+    completion = {
+      ghost_text = {
+        enabled = false,
+        show_with_selection = true,
+        show_without_selection = false,
+        show_with_menu = true,
+        show_without_menu = true,
+      },
+    },
   },
 }
