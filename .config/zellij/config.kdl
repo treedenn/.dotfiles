@@ -1,4 +1,7 @@
 // Redo the keybinds at some point
+// https://zellij.dev/documentation/configuration.html
+// https://github.com/zellij-org/zellij/blob/main/zellij-utils/assets/config/default.kdl
+
 keybinds clear-defaults=true {
     normal {
         bind "Alt H" { GoToPreviousTab; }
@@ -6,7 +9,7 @@ keybinds clear-defaults=true {
     }
 
     locked {
-        bind "Alt g" "Alt a" { SwitchToMode "Normal"; }
+        bind "Alt a" { SwitchToMode "Normal"; }
         bind "Alt w" { SwitchToMode "Tmux"; }
     }
 
