@@ -6,6 +6,7 @@ return {
   config = function()
     require("copilot").setup({
       suggestion = {
+        enabled = false,
         auto_trigger = false,  -- Prevent auto-triggering suggestions (optional)
         keymap = {
           accept = false,      -- Disable default `<Tab>` keymap
@@ -16,20 +17,7 @@ return {
           dismiss = false,     -- Disable `<C-]>` (dismiss suggestion)
         },
       },
-    })
-
-    vim.api.nvim_create_autocmd("User", {
-      pattern = "BlinkCmpMenuOpen",
-      callback = function()
-        vim.b.copilot_suggestion_hidden = true
-      end,
-    })
-
-    vim.api.nvim_create_autocmd("User", {
-      pattern = "BlinkCmpMenuClose",
-      callback = function()
-        vim.b.copilot_suggestion_hidden = false
-      end,
+      panel = { enabled = false },
     })
   end,
 }
