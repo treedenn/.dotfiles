@@ -10,7 +10,7 @@ return {
   opts = {
     servers = {
       gopls = {},
-      vuels = {},
+      volar = {},
       ts_ls = {
         filetypes = {
           "javascript",
