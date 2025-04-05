@@ -4,6 +4,9 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- empty fillchar
+vim.opt.fillchars = "eob: "
+
 -- show current line number and relative line numbers
 vim.opt.number = true
 vim.opt.relativenumber = true
