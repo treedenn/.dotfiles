@@ -1,29 +1,33 @@
 -- https://github.com/williamboman/mason.nvim
 -- https://mason-registry.dev/registry/list
+-- https://github.com/neovim/nvim-lspconfig
+-- LSP configuration with mason as the lsp manager and blink as the completion source
 return {
-  "williamboman/mason.nvim",
+  "neovim/nvim-lspconfig",
   dependencies = {
     "williamboman/mason-lspconfig.nvim",
-    "neovim/nvim-lspconfig",
-    'saghen/blink.cmp'
+    "williamboman/mason.nvim",
+    "saghen/blink.cmp"
   },
   opts = {
     servers = {
+      lua_ls = {},
       gopls = {},
-      volar = {},
       ts_ls = {
         filetypes = {
-          "javascript",
-          "typescript",
-        },
+          'typescript',
+          'javascript',
+          'javascriptreact',
+          'typescriptreact',
+          'vue'
+        }
       },
       tailwindcss = {},
       cssls = {},
-      lua_ls = {},
+      volar = {},
       sqls = {},
       vacuum = {},
       ansiblels = {},
-      biome = {},
     }
   },
   config = function(_, opts)
@@ -37,7 +41,23 @@ return {
       ensure_installed = servers,
     })
 
+
+    -- dynamic config for volar
+    local mason_registry = require('mason-registry')
+    local vue_language_server_path = mason_registry.get_package('vue-language-server'):get_install_path() ..
+        '/node_modules/@vue/language-server'
+
     local lspconfig = require('lspconfig')
+
+    lspconfig["ts_ls"].init_options = {
+      plugins = {
+        {
+          name = '@vue/typescript-plugin',
+          location = vue_language_server_path,
+          languages = { 'vue' },
+        },
+      },
+    }
 
     for server, config in pairs(opts.servers) do
       config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)

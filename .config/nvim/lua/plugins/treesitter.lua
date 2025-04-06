@@ -8,8 +8,16 @@ return {
       local configs = require("nvim-treesitter.configs")
 
       configs.setup({
-        ensure_installed = { "lua", "vim", "go", "gomod", "helm", "java", "javadoc", "json", "vue", "xml", "bash", "yaml" },
-        sync_install = false,
+        ensure_installed = {
+          "lua", "vim",
+          "helm",
+          "go", "gomod",
+          "java", "javadoc",
+          "vue", "typescript", "javascript",
+          "json", "xml", "yaml",
+          "bash"
+        },
+        sync_install = true,
         highlight = { enable = true },
         indent = { enable = true },
       })
