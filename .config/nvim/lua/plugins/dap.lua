@@ -2,6 +2,8 @@
 -- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation
 -- https://github.com/rcarriga/nvim-dap-ui
 -- https://github.com/leoluz/nvim-dap-go
+-- Debbuging and debugging UI for Neovim
+-- Includes a simple plugin to install debuggers
 return {
 	{
 		"mfussenegger/nvim-dap",
