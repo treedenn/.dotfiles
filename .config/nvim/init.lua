@@ -7,6 +7,9 @@ vim.g.maplocalleader = " "
 -- empty fillchar
 vim.opt.fillchars = "eob: "
 
+-- lsp lines
+vim.diagnostic.config({ virtual_text = true })
+
 -- show current line number and relative line numbers
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -20,7 +23,7 @@ vim.opt.softtabstop = 2
 vim.opt.smartindent = true
 vim.opt.shiftwidth = 2
 
--- highlight and incremental search 
+-- highlight and incremental search
 vim.opt.incsearch = true
 vim.opt.hlsearch = true
 

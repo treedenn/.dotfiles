@@ -12,13 +12,20 @@ return {
 				},
 
 				formatters_by_ft = {
-					go = { "gofmt" },
-					javascript = { "biome", "prettierd", stop_after_first = true },
-					typescript = { "biome", "prettierd", stop_after_first = true },
-					json = { "biome", "prettierd", stop_after_first = true },
-					lua = { "stylua" },
-					vue = { "prettierd" },
+					go = { "goimports", "gofmt", lsp_format = "fallback" },
+					javascript = { "biome", "prettierd", lsp_format = "fallback", stop_after_first = true },
+					typescript = { "biome", "prettierd", lsp_format = "fallback", stop_after_first = true },
+					json = { "biome", "prettierd", lsp_format = "fallback", stop_after_first = true },
+					lua = { "stylua", lsp_format = "fallback" },
+					vue = { "prettierd", lsp_format = "fallback" },
 				},
+			})
+
+			vim.api.nvim_create_autocmd("BufWritePre", {
+				pattern = "*",
+				callback = function(args)
+					require("conform").format({ bufnr = args.buf })
+				end,
 			})
 		end,
 	},
