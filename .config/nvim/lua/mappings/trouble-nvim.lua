@@ -14,3 +14,16 @@ vim.keymap.set(
 )
 vim.keymap.set("n", "<leader>xL", "<cmd>Trouble loclist toggle<cr>", { desc = "Location List (Trouble)" })
 vim.keymap.set("n", "<leader>xQ", "<cmd>Trouble qflist toggle<cr>", { desc = "Quickfix List (Trouble)" })
+
+vim.keymap.set(
+	"n",
+	"[d",
+	"<cmd>Trouble diagnostics prev jump=true focus=false<cr>",
+	{ desc = "Prev Trouble Diagnostic" }
+)
+vim.keymap.set(
+	"n",
+	"]d",
+	"<cmd>Trouble diagnostics next jump=true focus=false<cr>",
+	{ desc = "Next Trouble Diagnostic" }
+)

@@ -9,8 +9,13 @@ map("n", "q]", "<cmd>cnext<CR>", { desc = "Quickfix Next line" })
 
 -- Diagnostics
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostics in float" })
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
+-- Trouble overwrites since since it works across files
+-- vim.keymap.set("n", "[d", function()
+-- 	vim.diagnostic.jump({ count = 1, float = true })
+-- end, { desc = "Go to previous diagnostic" })
+-- vim.keymap.set("n", "]d", function()
+-- 	vim.diagnostic.jump({ count = -1, float = true })
+-- end, { desc = "Go to next diagnostic" })
 vim.keymap.set("n", "<leader>gq", vim.diagnostic.setloclist, { desc = "Diagnostics to location list" })
 
 -- LSP Navigation & Actions
@@ -20,9 +25,9 @@ vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { desc = "Go to implementa
 vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "Find references" })
 -- vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = "Hover info" })
 vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, { desc = "Signature help" })
--- vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = "Rename symbol" }) -- already mapped by lsp default with grn
--- vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = "Code action" }) -- already mapped by lsp default with gra
 
+vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename symbol" })
+vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code action" })
 vim.keymap.set("n", "<leader>gl", function()
 	vim.diagnostic.config({
 		virtual_lines = not vim.diagnostic.config().virtual_lines,

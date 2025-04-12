@@ -13,9 +13,9 @@ return {
 
 				formatters_by_ft = {
 					go = { "goimports", "gofmt", lsp_format = "fallback" },
-					javascript = { "biome", "prettierd", lsp_format = "fallback", stop_after_first = true },
-					typescript = { "biome", "prettierd", lsp_format = "fallback", stop_after_first = true },
-					json = { "biome", "prettierd", lsp_format = "fallback", stop_after_first = true },
+					javascript = { "biome" },
+					typescript = { "biome" },
+					json = { "biome", "prettierd", lsp_format = "fallback" },
 					lua = { "stylua", lsp_format = "fallback" },
 					vue = { "prettierd", lsp_format = "fallback" },
 				},
