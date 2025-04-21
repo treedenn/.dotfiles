@@ -12,6 +12,8 @@ return {
 			"mfussenegger/nvim-dap",
 			"rcarriga/nvim-dap-ui",
 			"leoluz/nvim-dap-go",
+			"jay-babu/mason-nvim-dap.nvim",
+			"mason.nvim",
 			-- "theHamsta/nvim-dap-virtual-text",
 		},
 		config = function()
@@ -20,40 +22,22 @@ return {
 
 			require("dapui").setup({})
 			require("dap-go").setup()
-
-			dap.listeners.before.attach.dapui_config = function()
-				dapui.open()
-			end
-			dap.listeners.before.launch.dapui_config = function()
-				dapui.open()
-			end
-			dap.listeners.before.event_terminated.dapui_config = function()
-				dapui.close()
-			end
-			dap.listeners.before.event_exited.dapui_config = function()
-				dapui.close()
-			end
-		end,
-	},
-	{
-		"leoluz/nvim-dap-go",
-		dependencies = {
-			"mfussenegger/nvim-dap",
-		},
-		config = function()
-			require("dap-go").setup()
-		end,
-	},
-	{
-		"jay-babu/mason-nvim-dap.nvim",
-		dependencies = {
-			"mason.nvim",
-			"mfussenegger/nvim-dap",
-		},
-		config = function()
 			require("mason-nvim-dap").setup({
 				ensure_installed = { "delve" },
 			})
+
+			-- dap.listeners.before.attach.dapui_config = function()
+			-- 	dapui.open()
+			-- end
+			-- dap.listeners.before.launch.dapui_config = function()
+			-- 	dapui.open()
+			-- end
+			-- dap.listeners.before.event_terminated.dapui_config = function()
+			-- 	dapui.close()
+			-- end
+			-- dap.listeners.before.event_exited.dapui_config = function()
+			-- 	dapui.close()
+			-- end
 		end,
 	},
 }

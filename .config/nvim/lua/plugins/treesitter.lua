@@ -25,6 +25,7 @@ return {
 					"xml",
 					"yaml",
 					"bash",
+					"sql",
 				},
 				sync_install = true,
 				highlight = { enable = true },

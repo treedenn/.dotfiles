@@ -8,6 +8,7 @@ vim.g.maplocalleader = " "
 vim.opt.fillchars = "eob: "
 
 -- lsp lines
+vim.lsp.enable = true
 vim.diagnostic.config({ virtual_text = true })
 
 -- show current line number and relative line numbers
