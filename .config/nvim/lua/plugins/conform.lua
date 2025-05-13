@@ -22,6 +22,7 @@ return {
 					lua = { "stylua", lsp_format = "fallback" },
 					vue = { "prettierd", lsp_format = "fallback" },
 					sql = { "sqruff" },
+					rego = { "opa_fmt" },
 				},
 			})
 

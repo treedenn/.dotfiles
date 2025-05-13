@@ -52,7 +52,8 @@ return {
 				volar = {},
 				sqls = {},
 				ansiblels = {},
-        vacuum = {},
+				vacuum = {},
+				regal = {},
 			},
 		},
 		config = function(_, opts)
@@ -64,6 +65,7 @@ return {
 
 			require("mason").setup()
 			require("mason-lspconfig").setup({
+				automatic_enable = {},
 				ensure_installed = servers,
 			})
 
@@ -71,7 +73,7 @@ return {
 
 			---- Typescript with Volar
 			local mason_registry = require("mason-registry")
-			local vue_language_server_path = mason_registry.get_package("vue-language-server"):get_install_path()
+			local vue_language_server_path = vim.fn.exepath("vue-language-server")
 				.. "/node_modules/@vue/language-server"
 
 			opts.servers.ts_ls.init_options = {
@@ -91,5 +93,14 @@ return {
 				lspconfig[server].setup(config)
 			end
 		end,
+	},
+	-- https://github.com/ray-x/lsp_signature.nvim
+	-- Show function signature while typing
+	{
+		"ray-x/lsp_signature.nvim",
+		event = "InsertEnter",
+		opts = {
+			-- cfg options
+		},
 	},
 }
