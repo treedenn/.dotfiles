@@ -1,6 +1,10 @@
 local fzf_lua = require("fzf-lua")
 
 vim.keymap.set("n", "<leader>ff", function()
+	fzf_lua.files({ fd_opts = "--no-ignore" })
+end, { desc = "Find files in from CWD (FZF)" })
+
+vim.keymap.set("n", "<leader>fF", function()
 	fzf_lua.files()
 end, { desc = "Find files in from CWD (FZF)" })
 

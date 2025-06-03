@@ -8,6 +8,7 @@ keybinds clear-defaults=true {
     }
 
     normal {
+        bind "Alt e" { EditScrollback; SwitchToMode "Locked"; }
         bind "Alt t" { SwitchToMode "Tab"; }
         bind "Alt p" { SwitchToMode "Pane"; }
         bind "Alt n" { SwitchToMode "Resize"; }
