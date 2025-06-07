@@ -64,6 +64,17 @@ vim.keymap.set("n", "<leader>fk", function()
 	fzf_lua.keymaps()
 end, { desc = "Search for keymaps (FZF)" })
 
+vim.keymap.set({ "n", "v", "i" }, "<C-x><C-p>", function()
+	require("fzf-lua").complete_path()
+end, { silent = true, desc = "Fuzzy complete path" })
+
+vim.keymap.set({ "n", "v", "i" }, "<C-x><C-f>", function()
+	require("fzf-lua").complete_file({
+		cmd = "rg --files",
+		winopts = { preview = { hidden = true } },
+	})
+end, { silent = true, desc = "Fuzzy complete file" })
+
 -- ##############
 -- LSP + Diagnostics functions
 -- ##############

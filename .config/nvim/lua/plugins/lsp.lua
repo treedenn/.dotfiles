@@ -49,7 +49,6 @@ return {
 				},
 				tailwindcss = {},
 				cssls = {},
-				volar = {},
 				sqls = {},
 				ansiblels = {},
 				vacuum = {},
@@ -71,10 +70,9 @@ return {
 
 			-- Dynamic configurations
 
-			---- Typescript with Volar
-			local mason_registry = require("mason-registry")
-			local vue_language_server_path = vim.fn.exepath("vue-language-server")
-				.. "/node_modules/@vue/language-server"
+			---- Typescript with Vue LS (Volar)
+			local vue_language_server_path = vim.fn.stdpath("data")
+				.. "/mason/packages/vue-language-server/node_modules/@vue/language-server"
 
 			opts.servers.ts_ls.init_options = {
 				plugins = {
